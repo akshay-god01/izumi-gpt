@@ -19,7 +19,7 @@ def chat_with_gpt4():
     }
 
     payload = {
-        'model': 'gpt-4',
+        'model': 'davinci-codex',
         'messages': [
             {'role': 'user', 'content': user_message}
         ]

@@ -6,10 +6,12 @@ app = Flask(__name__)
 # Replace with your OpenAI GPT-4 API key
 OPENAI_API_KEY = "sk-proj-gNesKpQ3dJQJNzZoPCxDT3BlbkFJHhUua0j3QgY15ctGPmYl"
 
-@app.route('/gpt-4', methods=['POST'])
+@app.route('/gpt', methods=['GET'])
 def chat_with_gpt4():
-    data = request.get_json()
-    user_message = data['chat']
+    user_message = request.args.get('q')
+
+    if not user_message:
+        return jsonify({'error': 'No query parameter "q" provided'}), 400
 
     headers = {
         'Content-Type': 'application/json',
